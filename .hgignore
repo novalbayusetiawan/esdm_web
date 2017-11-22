@@ -1,0 +1,11 @@
+syntax: glob
+
+\.orig$
+\.class$
+\.orig\..*$
+\.chg\..*$
+\.rej$
+\.conflict\~$
+
+contains_related/*
+application/config/*
