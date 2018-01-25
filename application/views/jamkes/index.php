@@ -56,13 +56,13 @@ $(document).ready(function(){
                             <thead>
                                 <tr>
                                     <th rowspan="2">Nama_Perusahaan</th>
-                                    <th colspan="3" class="text-center">Pra Jaminan Kesungguhan</th>
-                                    <th colspan="3" class="text-center">Realisasi Jaminan Kesungguhan</th>
+                                    <th colspan="3" class="text-center">Penetapan Jaminan Kesungguhan</th>
+                                    <th colspan="3" class="text-center">Penempatan Jaminan Kesungguhan</th>
                                     <th rowspan="2">Jenis_Jaminan_Kesungguhan</th>
                                     <th rowspan="2">Bank_Jaminan_Kesungguhan</th>
                                 </tr>
                                 <tr>
-                                    <th>Tahun_Pra_Jaminan_Kesungguhan</th>
+                                    <th>Tahun_Penetapan_Jaminan_Kesungguhan</th>
                                     <th>Besaran_Rupiah</th>
                                     <th>Besaran_Dollar</th>
                                     <th>Tahun_Jaminan_Kesungguhan</th>

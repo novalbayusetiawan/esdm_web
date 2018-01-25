@@ -14,10 +14,10 @@ $(document).on("click", ".data-edit", function(event){
     request.done(function(json){
         $("#form_edit").find("select option").prop("selected", false);
         $("#form_edit").find("input[name=id]").val(json.result.id);
-        $("#form_edit").find("select[name=tahun_prajamtup] option[value='"+json.result.tahun_prajamtup+"']").prop("selected", true);
+        $("#form_edit").find("input[name=thn_prajamtup]").val(json.result.thn_prajamtup);
         $("#form_edit").find("input[name=rupiah_prajamtup]").val(json.result.rupiah_prajamtup);
         $("#form_edit").find("input[name=dollar_prajamtup]").val(json.result.dollar_prajamtup);
-        $("#form_edit").find("select[name=tahun_jamtup] option[value='"+json.result.tahun_jamtup+"']").prop("selected", true);
+        $("#form_edit").find("input[name=thn_jamtup]").val(json.result.thn_jamtup);
         $("#form_edit").find("input[name=rupiah_jamtup]").val(json.result.rupiah_jamtup);
         $("#form_edit").find("input[name=dollar_jamtup]").val(json.result.dollar_jamtup);
         $("#form_edit").find("input[name=jenis_jamtup]").val(json.result.jenis_jamtup);
@@ -78,11 +78,18 @@ $(document).on("submit", "#form_edit", function(event){
             <div class="modal-body">
                 <h4>Rencana Jamtup</h4>
                 <div class="row">
-                    <div class="col col-md-6">
+                    
+                    <div class="col col-md-12">
                         <div class="form-group">
                             <?php
-                            echo form_label("Tahun Jamtup", "thn_prajamtup");
-                            echo form_dropdown("thn_prajamtup", $tahun, "", "id=\"thn_prajamtup\" class=\"form-control\"");
+                            $data = array(
+                                "name" => "thn_prajamtup",
+                                "class" => "form-control",
+                                "placeholder" => "Tahun Jamtup",
+                                "required" => "required"
+                            );
+                            echo form_label($data["placeholder"], $data["name"]);
+                            echo form_input($data);
                             ?>
                         </div>
                     </div>
@@ -122,11 +129,17 @@ $(document).on("submit", "#form_edit", function(event){
                 <hr />
                 <h4>Realisasi Jamtup</h4>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col col-md-12">
                         <div class="form-group">
                             <?php
-                            echo form_label("Tahun Jamtup", "thn_jamtup");
-                            echo form_dropdown("thn_jamtup", $tahun, "", "id=\"thn_jamtup\" class=\"form-control\"");
+                            $data = array(
+                                "name" => "thn_jamtup",
+                                "class" => "form-control",
+                                "placeholder" => "Tahun Jamtup",
+                                "required" => "required"
+                            );
+                            echo form_label($data["placeholder"], $data["name"]);
+                            echo form_input($data);
                             ?>
                         </div>
                     </div>

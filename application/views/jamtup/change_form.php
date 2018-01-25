@@ -10,7 +10,7 @@ $(document).ready(function(){
         "serverMethod": "POST",
         "ajax":"<?php echo base_url("jamtup/dt_show?id_perusahaan={$id}"); ?>",
         "columns": [
-            {"data": "id_jamtup"},
+            {"data": "id"},
             {"data": "nama_perusahaan"},
             {"data": "thn_prajamtup"},
             {"data": "rupiah_prajamtup"},
@@ -71,8 +71,8 @@ $(document).ready(function(){
                                 <tr>
                                     <th rowspan="2">ID</th>
                                     <th rowspan="2">Perusahaan</th>
-                                    <th colspan="3" class="text-center">Rencana Jaminan</th>
-                                    <th colspan="3" class="text-center">Realisasi Jaminan</th>
+                                    <th colspan="3" class="text-center">Penetapan Jaminan</th>
+                                    <th colspan="3" class="text-center">Penempatan Jaminan</th>
                                     <th rowspan="2">Jenis Jaminan/Deposito</th>
                                     <th rowspan="2">Nama Bank</th>
                                     <th rowspan="2" width="1">Action</th>

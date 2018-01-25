@@ -56,13 +56,13 @@ $(document).ready(function(){
                             <thead>
                                 <tr>
                                     <th rowspan="2">Nama_Perusahaan</th>
-                                    <th colspan="3" class="text-center">Pra Jamtup</th>
-                                    <th colspan="3" class="text-center">Realisasi Jamtup</th>
+                                    <th colspan="3" class="text-center">Penetapan Jamtup</th>
+                                    <th colspan="3" class="text-center">Penempatan Jamtup</th>
                                     <th rowspan="2">Jenis_Jamtup</th>
                                     <th rowspan="2">Bank_Jamtup</th>
                                 </tr>
                                 <tr>
-                                    <th>Tahun_Pra_Jamtup</th>
+                                    <th>Tahun_Penetapan_Jamtup</th>
                                     <th>Besaran_Rupiah</th>
                                     <th>Besaran_Dollar</th>
                                     <th>Tahun_Jamtup</th>

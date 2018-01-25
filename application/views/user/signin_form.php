@@ -61,7 +61,7 @@ $(document).ready(function(){
                 <!-- <i class="fa fa-sign-in" style="font-size:90px"></i> -->
             </div>
             <div class="brand" style="font-size:23px;">
-                DISTAMBEN KALTIM
+                ESDM KALTIM
                 <small>Dinas Energi dan Sumber Daya Mineral <br />Provinsi Kalimantan Timur</small>
             </div>
         </div>
@@ -102,7 +102,7 @@ $(document).ready(function(){
                 </div>
                 <hr style="border-top:1px solid #2d353c;margin:40px 40px 10px" />
                 <p class="text-center text-inverse">
-                    &copy; DISTAMBEN KALTIM - 2017
+                    &copy; ESDM KALTIM - 2017
                 </p>
             </form>
         </div>

@@ -293,10 +293,11 @@ $(document).on("submit", "#form_password", function(event){
                             $data = array(
                               "name"        => "nama_ktt",
                               "class"       => "form-control input-md input-small",
+                              "style"       => "height:35px",
                               "placeholder" => "Nama KTT"
                             );
                             echo form_label($data["placeholder"], $data["name"]);
-                            echo form_input($data);
+                            echo form_textarea($data);
                           ?>
                       </div>
                       <div class="form-group">
@@ -304,10 +305,11 @@ $(document).on("submit", "#form_password", function(event){
                             $data = array(
                               "name"        => "hp_ktt",
                               "class"       => "form-control input-md input-small",
+                              "style"       => "height:35px",
                               "placeholder" => "No. HP KTT"
                             );
                             echo form_label($data["placeholder"], $data["name"]);
-                            echo form_input($data);
+                            echo form_textarea($data);
                           ?>
                       </div>
                     </div>
@@ -317,10 +319,11 @@ $(document).on("submit", "#form_password", function(event){
                             $data = array(
                               "name"        => "email_ktt",
                               "class"       => "form-control input-md input-small",
+                              "style"       => "height:35px",
                               "placeholder" => "E-mail KTT"
                             );
                             echo form_label($data["placeholder"], $data["name"]);
-                            echo form_input($data);
+                            echo form_textarea($data);
                           ?>
                       </div>
                       <div class="form-group">
@@ -328,10 +331,11 @@ $(document).on("submit", "#form_password", function(event){
                             $data = array(
                               "name"        => "sk_ktt",
                               "class"       => "form-control input-md input-small",
+                              "style"       => "height:35px",
                               "placeholder" => "No. SK KTT"
                             );
                             echo form_label($data["placeholder"], $data["name"]);
-                            echo form_input($data);
+                            echo form_textarea($data);
                           ?>
                       </div>
                     </div>
@@ -397,14 +401,31 @@ $(document).on("submit", "#form_password", function(event){
                         </div>
                         <div class="form-group">
                             <?php
-                              $data = array(
-                                "name"        => "kabupaten",
-                                "class"       => "form-control input-md input-small",
-                                "placeholder" => "Kabupaten"
-                              );
-                              echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              // $data = array(
+                              //   "name"        => "kabupaten",
+                              //   "class"       => "form-control input-md input-small",
+                              //   "placeholder" => "Kabupaten",
+                              //   "required" => "required"
+                              // );
+                              // echo form_label($data["placeholder"], $data["name"]);
+                              // echo form_input($data);
                             ?>
+                            <div class="form-group">
+                              <label class="control-label">Kabupaten</label>
+                                <select class="form-control" name="kabupaten" required>
+                                  <option value="">Pilih Kabupaten/Kota</option>
+                                  <option value="Berau">Berau</option>
+                                  <option value="Kutai Barat">Kutai Barat</option>
+                                  <option value="Kutai Kartanegara">Kutai Kartanegara</option>
+                                  <option value="Kutai Timur">Kutai Timur</option>
+                                  <option value="Mahakam Ulu">Mahakam Ulu</option>
+                                  <option value="Paser">Paser</option>
+                                  <option value="Penajam Paser Utara">Penajam Paser Utara</option>
+                                  <option value="Balikpapan">Balikpapan</option>
+                                  <option value="Bontang">Bontang</option>
+                                  <option value="Samarinda">Samarinda</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -424,7 +445,7 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "propinsi",
                                 "class"       => "form-control input-md input-small",
-                                "placeholder" => "Propinsi"
+                                "placeholder" => "Provinsi"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
                               echo form_input($data);
@@ -581,6 +602,13 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_label($data["placeholder"], $data["name"]);
                               echo form_input($data);
                             ?>
+                        </div>
+                        <div class="form-group">
+                          <label class="btn btn-sm btn-success btn-file">
+                              <i class="fa fa-upload"></i> Upload 
+                              <input type="file" name="file_sk_tinjau" style="display: none;" accept="image/*">
+                          </label>
+                          <p>filename.ex</p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -1143,21 +1171,29 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_akta",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Akta Pendirian dan Perubahan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
+                            <div class="form-group" style=" padding-top: 5px">
+                              <label class="btn btn-xs btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_akta" style="display: none;" accept="image/*">
+                              </label>
+                              
+                            </div>
                         </div>
                         <div class="form-group">
                             <?php
                               $data = array(
                                 "name"        => "no_kenapajak",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Pengusaha Kena Pajak"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1165,10 +1201,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_dagang",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Surat Izin Usaha Perdagangan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1176,10 +1213,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_kelayakan",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Kelayakan Lingkungan Hidup"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1187,10 +1225,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_manfaatbbc",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Pemanfaatan Tangki BBC"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1198,10 +1237,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_handak",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Penggunaan Handak"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1209,10 +1249,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_campur",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Pengelolaan/Pencampuran"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1220,10 +1261,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_izinlj",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Lintas Jalan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1231,10 +1273,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_cnc",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "No. SK Clean and Clear"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                     </div>
@@ -1244,10 +1287,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_npwp",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "NPWP Badan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1255,10 +1299,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_tdper",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Tanda Daftar Perusahaan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1266,10 +1311,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_ho",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin UU Gangguan/HO"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1277,10 +1323,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_limbah",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Pengelolaan Limbah B3"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1288,10 +1335,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_bbc",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Tangki Bahan Bakar Cair"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1299,10 +1347,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_pelabuhan",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Terminal/Pelabuhan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1310,10 +1359,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_ujp",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Usaha Jasa Pertambangan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1321,10 +1371,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_setling",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Setling Pond"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                     </div>
@@ -1334,10 +1385,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_domisili",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Domisili Perusahaan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1345,10 +1397,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_pajak",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Terdaftar Pajak"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1356,10 +1409,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_eksport",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Eksportir Terdaftar"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1367,10 +1421,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_air",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Pemanfaatan Air Bawah Tanah"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1378,10 +1433,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_gudang",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "No. Izin Gudang Handak"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1389,10 +1445,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_kawasan",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Pinjam Kawasan Hutan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1400,10 +1457,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_opkhusus",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "IUP OP Pengangkutan/Penjualan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1411,10 +1469,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_lingkungan",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Izin Lingkungan"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                     </div>
@@ -1436,10 +1495,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_jamrekeks",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Jaminan Reklamasi Tahap Eksplorasi"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1447,10 +1507,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_jaminankesungguhan",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Jaminan Kesungguhan Eksplorasi"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1458,10 +1519,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_fs",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "Nomor Dokumen FS"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1469,10 +1531,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_rp",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "No. Dokumen Rencana Pasca Tambang"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                     </div>
@@ -1482,10 +1545,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_jamrekpro",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Jaminan Reklamasi Tahap Produksi"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1493,10 +1557,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_iuran",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Iuran Tetap"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1504,10 +1569,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_amdal",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "No. Dokumen AMDAL/UKL-UPL"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1515,10 +1581,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_rkttl",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "No. Dokumen RKTTL"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                     </div>
@@ -1528,10 +1595,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_jamtup",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Jaminan Pasca Tambang"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1539,10 +1607,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_royalti",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "SK Royalti"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1550,10 +1619,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_rr",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "No. Dokumen Rencana Reklamasi"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                         <div class="form-group">
@@ -1561,10 +1631,11 @@ $(document).on("submit", "#form_password", function(event){
                               $data = array(
                                 "name"        => "no_rkab",
                                 "class"       => "form-control input-md input-small",
+                                "style"       => "height:35px",
                                 "placeholder" => "No. Dokumen RKAB"
                               );
                               echo form_label($data["placeholder"], $data["name"]);
-                              echo form_input($data);
+                              echo form_textarea($data);
                             ?>
                         </div>
                     </div>
@@ -1598,9 +1669,9 @@ $(document).on("submit", "#form_password", function(event){
                           <?php
                             $data = array(
                               "name" => "tereka",
-                              "class" => "form-control",
+                              "class" => "form-control input-number",
                               // "placeholder" => "Tereka (Ton)",
-                              "maxlength" => 10
+                              "maxlength" => 13
                             );
                           ?>
                           <label class="control-label">
@@ -1619,9 +1690,9 @@ $(document).on("submit", "#form_password", function(event){
                           <?php
                             $data = array(
                               "name" => "terunjuk",
-                              "class" => "form-control",
+                              "class" => "form-control input-number",
                               // "placeholder" => "Tereka (Ton)",
-                              "maxlength" => 10
+                              "maxlength" => 13
                             );
                           ?>
                           <label class="control-label">
@@ -1640,9 +1711,9 @@ $(document).on("submit", "#form_password", function(event){
                           <?php
                             $data = array(
                               "name" => "terukur",
-                              "class" => "form-control",
+                              "class" => "form-control input-number",
                               // "placeholder" => "Tereka (Ton)",
-                              "maxlength" => 10
+                              "maxlength" => 13
                             );
                           ?>
                           <label class="control-label">
@@ -1682,7 +1753,7 @@ $(document).on("submit", "#form_password", function(event){
                            Total Moisture (%)
                          </label>
                          <div class="input-group">
-                           <?php echo form_input($data); ?>
+                           <?php echo form_number($data); ?>
                              <span class="input-group-addon">
                                <span>%</span>
                              </span>
@@ -1703,7 +1774,7 @@ $(document).on("submit", "#form_password", function(event){
                             Total Sulphur (%)
                           </label>
                           <div class="input-group">
-                            <?php echo form_input($data); ?>
+                            <?php echo form_number($data); ?>
                               <span class="input-group-addon">
                                 <span>%</span>
                               </span>
@@ -1724,7 +1795,7 @@ $(document).on("submit", "#form_password", function(event){
                             ASH (%)
                           </label>
                           <div class="input-group">
-                            <?php echo form_input($data); ?>
+                            <?php echo form_number($data); ?>
                               <span class="input-group-addon">
                                 <span>%</span>
                               </span>
@@ -1736,7 +1807,7 @@ $(document).on("submit", "#form_password", function(event){
                           <?php
                             $data = array(
                               "name" => "calori",
-                              "class" => "form-control",
+                              "class" => "form-control input-number",
                               // "placeholder" => "Tereka (Ton)",
                               "maxlength" => 10
                             );
@@ -1769,9 +1840,9 @@ $(document).on("submit", "#form_password", function(event){
                          <?php
                            $data = array(
                              "name" => "terkira",
-                             "class" => "form-control",
+                             "class" => "form-control input-number",
                              // "placeholder" => "Tereka (Ton)",
-                             "maxlength" => 10
+                             "maxlength" => 13
                            );
                          ?>
                          <label class="control-label">
@@ -1788,9 +1859,9 @@ $(document).on("submit", "#form_password", function(event){
                          <?php
                            $data = array(
                              "name" => "terbukti",
-                             "class" => "form-control",
+                             "class" => "form-control input-number",
                              // "placeholder" => "Tereka (Ton)",
-                             "maxlength" => 10
+                             "maxlength" => 13
                            );
                          ?>
                          <label class="control-label">
@@ -1830,9 +1901,9 @@ $(document).on("submit", "#form_password", function(event){
                          <?php
                            $data = array(
                              "name" => "jumlah_penjualan",
-                             "class" => "form-control",
+                             "class" => "form-control input-number",
                              // "placeholder" => "Tereka (Ton)",
-                             "maxlength" => 10
+                             "maxlength" => 13
                            );
                          ?>
                          <label class="control-label">

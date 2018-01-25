@@ -50,11 +50,17 @@ $(document).on("submit", "#form_add", function(event){
             <div class="modal-body">
                 <h4>Rencana Jamrek</h4>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col col-md-12">
                         <div class="form-group">
                             <?php
-                            echo form_label("Tahun Jamrek", "thn_prajamrek");
-                            echo form_dropdown("thn_prajamrek", $tahun, "", "id=\"thn_prajamrek\" class=\"form-control\"");
+                            $data = array(
+                                "name" => "thn_prajamrek",
+                                "class" => "form-control",
+                                "placeholder" => "Tahun Jamrek",
+                                "required" => "required"
+                            );
+                            echo form_label($data["placeholder"], $data["name"]);
+                            echo form_input($data);
                             ?>
                         </div>
                     </div>
@@ -94,11 +100,17 @@ $(document).on("submit", "#form_add", function(event){
                 <hr />
                 <h4>Realisasi Jamrek</h4>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col col-md-12">
                         <div class="form-group">
                             <?php
-                            echo form_label("Tahun Jamrek", "thn_jamrek");
-                            echo form_dropdown("thn_jamrek", $tahun, "", "id=\"thn_jamrek\" class=\"form-control\"");
+                            $data = array(
+                                "name" => "thn_jamrek",
+                                "class" => "form-control",
+                                "placeholder" => "Tahun Jamrek",
+                                "required" => "required"
+                            );
+                            echo form_label($data["placeholder"], $data["name"]);
+                            echo form_input($data);
                             ?>
                         </div>
                     </div>

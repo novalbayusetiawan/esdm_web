@@ -209,7 +209,7 @@ class Perusahaan extends CI_Controller {
 
         for ($i = 0; $i < count($result["data"]); $i++){
             $id = $result["data"][$i]["id"];
-            $result["data"][$i]["open"] = "<a href=\"".base_url("perusahaan/change_form?id=$id")."\" class=\"btn btn-primary btn-xs\" role=\"button\"><i class=\"fa fa-pencil\"></i> Edit</a> <a href=\"".base_url("perusahaan/delete?id=$id")."\" onclick=\"return confirm('Apakah anda yakin ingin menghapus data?');\" class=\"btn btn-danger btn-xs\" role=\"button\"><i class=\"fa fa-times\"></i></a>";
+            $result["data"][$i]["open"] = "<a href=\"".base_url("perusahaan/change_form?id=$id")."\" class=\"btn btn-primary btn-xs\" role=\"button\" title=\"Edit\"><i class=\"fa fa-pencil\"></i> Edit</a> <a href=\"".base_url("perusahaan/delete?id=$id")."\" onclick=\"return confirm('Apakah anda yakin ingin menghapus data?');\" class=\"btn btn-danger btn-xs\" role=\"button\" title=\"Hapus\"><i class=\"fa fa-times\"></i></a>";
         }
         echo json_encode($result);
     }
@@ -337,6 +337,7 @@ class Perusahaan extends CI_Controller {
             "no_campur" => $this->input->post("no_campur"),
             "no_opkhusus" => $this->input->post("no_opkhusus"),
             "no_cnc" => $this->input->post("no_cnc"),
+            "no_cabut" => $this->input->post("no_cabut"),
             "no_eksport" => $this->input->post("no_eksport"),
             "no_fs" => $this->input->post("no_fs"),
             "no_amdal" => $this->input->post("no_amdal"),
@@ -383,6 +384,7 @@ class Perusahaan extends CI_Controller {
             ));
         }
         echo $response;
+        // header('location:'.base_url()."perusahaan/change_index");
     }
 
     public function update()
@@ -486,6 +488,7 @@ class Perusahaan extends CI_Controller {
             "no_campur" => $this->input->post("no_campur"),
             "no_opkhusus" => $this->input->post("no_opkhusus"),
             "no_cnc" => $this->input->post("no_cnc"),
+            "no_cabut" => $this->input->post("no_cabut"),
             "no_eksport" => $this->input->post("no_eksport"),
             "no_fs" => $this->input->post("no_fs"),
             "no_amdal" => $this->input->post("no_amdal"),
@@ -574,6 +577,6 @@ class Perusahaan extends CI_Controller {
             ));
         }
         // echo $response;
-        header('location:'.base_url()."perusahaan");
+        header('location:'.base_url()."perusahaan/change_index");
     }
 }

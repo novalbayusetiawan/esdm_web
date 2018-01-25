@@ -56,13 +56,13 @@ $(document).ready(function(){
                             <thead>
                                 <tr>
                                     <th rowspan="2">Nama_Perusahaan</th>
-                                    <th colspan="3" class="text-center">Pra Iuran Tetap</th>
-                                    <th colspan="3" class="text-center">Realisasi Iuran Tetap</th>
+                                    <th colspan="3" class="text-center">Penetapan Iuran Tetap</th>
+                                    <th colspan="3" class="text-center">Penempatan Iuran Tetap</th>
                                     <th rowspan="2">Jenis_Iuran_Tetap</th>
                                     <th rowspan="2">Bank_Iuran_Tetap</th>
                                 </tr>
                                 <tr>
-                                    <th>Tahun_Pra_Iuran_Tetap</th>
+                                    <th>Tahun_Penetapan_Iuran_Tetap</th>
                                     <th>Besaran_Rupiah</th>
                                     <th>Besaran_Dollar</th>
                                     <th>Tahun_Iuran_Tetap</th>

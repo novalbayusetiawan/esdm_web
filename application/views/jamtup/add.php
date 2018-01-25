@@ -48,13 +48,19 @@ $(document).on("submit", "#form_add", function(event){
             </div>
             <?php echo form_hidden("id_perusahaan", $id); ?>
             <div class="modal-body">
-                <h4>Rencana Jamtup</h4>
+                <h4>Penetapan Jamtup</h4>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col col-md-12">
                         <div class="form-group">
                             <?php
-                            echo form_label("Tahun Jamtup", "thn_prajamtup");
-                            echo form_dropdown("thn_prajamtup", $tahun, "", "id=\"thn_prajamtup\" class=\"form-control\"");
+                            $data = array(
+                                "name" => "thn_prajamtup",
+                                "class" => "form-control",
+                                "placeholder" => "Tahun Jamtup",
+                                "required" => "required"
+                            );
+                            echo form_label($data["placeholder"], $data["name"]);
+                            echo form_input($data);
                             ?>
                         </div>
                     </div>
@@ -92,13 +98,19 @@ $(document).on("submit", "#form_add", function(event){
                     </div>
                 </div>
                 <hr />
-                <h4>Realisasi Jamtup</h4>
+                <h4>Penempatan Jamtup</h4>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col col-md-12">
                         <div class="form-group">
                             <?php
-                            echo form_label("Tahun Jamtup", "thn_jamtup");
-                            echo form_dropdown("thn_jamtup", $tahun, "", "id=\"thn_jamtup\" class=\"form-control\"");
+                            $data = array(
+                                "name" => "thn_jamtup",
+                                "class" => "form-control",
+                                "placeholder" => "Tahun Jamtup",
+                                "required" => "required"
+                            );
+                            echo form_label($data["placeholder"], $data["name"]);
+                            echo form_input($data);
                             ?>
                         </div>
                     </div>

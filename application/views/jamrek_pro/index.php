@@ -56,8 +56,8 @@ $(document).ready(function(){
                             <thead>
                                 <tr>
                                     <th rowspan="2">Nama_Perusahaan</th>
-                                    <th colspan="3" class="text-center">Pra Jamrek</th>
-                                    <th colspan="3" class="text-center">Realisasi Jamrek</th>
+                                    <th colspan="3" class="text-center">Penetapan Jamrek</th>
+                                    <th colspan="3" class="text-center">Penempatan Jamrek</th>
                                     <th rowspan="2">Jenis_Jamrek</th>
                                     <th rowspan="2">Bank_Jamrek</th>
                                 </tr>

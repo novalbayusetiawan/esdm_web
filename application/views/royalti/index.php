@@ -56,13 +56,13 @@ $(document).ready(function(){
                             <thead>
                                 <tr>
                                     <th rowspan="2">Nama_Perusahaan</th>
-                                    <th colspan="3" class="text-center">Pra Royalti</th>
-                                    <th colspan="3" class="text-center">Realisasi Royalti</th>
+                                    <th colspan="3" class="text-center">Penetapan Royalti</th>
+                                    <th colspan="3" class="text-center">Penempatan Royalti</th>
                                     <th rowspan="2">Jenis_Royalti</th>
                                     <th rowspan="2">Bank_Royalti</th>
                                 </tr>
                                 <tr>
-                                    <th>Tahun_Praroyalti</th>
+                                    <th>Tahun_Penetapan_royalti</th>
                                     <th>Besaran_Rupiah</th>
                                     <th>Besaran_Dollar</th>
                                     <th>Tahun_Royalti</th>

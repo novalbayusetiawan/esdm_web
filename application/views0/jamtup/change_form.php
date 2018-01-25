@@ -10,7 +10,7 @@ $(document).ready(function(){
         "serverMethod": "POST",
         "ajax":"<?php echo base_url("jamtup/dt_show?id_perusahaan={$id}"); ?>",
         "columns": [
-            {"data": "id_jamtup"},
+            {"data": "id"},
             {"data": "nama_perusahaan"},
             {"data": "thn_prajamtup"},
             {"data": "rupiah_prajamtup"},

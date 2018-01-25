@@ -128,7 +128,7 @@ class Jamtup extends CI_Controller {
         $result = $data["result"];
 
         for ($i = 0; $i < count($result["data"]); $i++){
-            $id = $result["data"][$i]["id_jamtup"];
+            $id = $result["data"][$i]["id"];
             $result["data"][$i]["action"] = "<div class=\"btn-group\">
                 <button type=\"button\" class=\"btn btn-success btn-xs dropdown-toggle\" data-toggle=\"dropdown\">
                     Action <span class=\"caret\"></span>
@@ -147,7 +147,7 @@ class Jamtup extends CI_Controller {
         header("Content-type: application/json");
 
         $params = array(
-            "id_jamtup" => $this->input->get("id")
+            "id" => $this->input->get("id")
         );
         
         // Local
@@ -217,7 +217,7 @@ class Jamtup extends CI_Controller {
         header("Content-type: application/json");
 
         $params = array(
-            "id_jamtup" => $this->input->post("id_jamtup"),
+            "id" => $this->input->post("id"),
             "thn_prajamtup" => $this->input->post("thn_prajamtup"),
             "rupiah_prajamtup" => $this->input->post("rupiah_prajamtup"),
             "dollar_prajamtup" => $this->input->post("dollar_prajamtup"),
@@ -268,7 +268,7 @@ class Jamtup extends CI_Controller {
         header("Content-type: application/json");
 
         $params = array(
-            "id_jamtup" => $this->input->get("id_jamtup")
+            "id" => $this->input->get("id")
         );
         
         $server_api = $this->config->item("api", "esdm");
