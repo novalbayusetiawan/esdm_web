@@ -52,7 +52,7 @@ $(document).ready(function(){
     });
 });
 // Event Section
-$(document).on("submit", "#form_add", function(event){
+$(document).on("submit", "#form__add", function(event){
     event.preventDefault();
     form = $(this);
     $btn = form.find("button[type='submit']");
@@ -128,7 +128,8 @@ $(document).on("submit", "#form_password", function(event){
             </ul>
         </div>
     </div> -->
-    <form id="form_add" role="form" action="<?php echo base_url("perusahaan/insert"); ?>" method="POST" enctype="application/x-www-form-urlencoded">
+    <form id="form_add" role="form" action="<?php echo base_url("perusahaan/insert"); ?>" method="POST" enctype="multipart/form-data">
+
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-inverse">
@@ -606,7 +607,7 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_tinjau" style="display: none;" accept="image/*">
+                              <input type="file" name="file_sk_tinjau" style="display: none;">
                           </label>
                           <p>filename.ex</p>
                         </div>
@@ -691,6 +692,14 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_input($data);
                             ?>
                         </div>
+
+                        <div class="form-group">
+                          <label class="btn btn-sm btn-success btn-file">
+                              <i class="fa fa-upload"></i> Upload 
+                              <input type="file" name="file_sk_pu" style="display: none;">
+                          </label>
+                          <p>filename.ex</p>
+                        </div>
                         <div class="form-group">
                           <?php
                             $data = array(
@@ -771,6 +780,14 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_label($data["placeholder"], $data["name"]);
                               echo form_input($data);
                             ?>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="btn btn-sm btn-success btn-file">
+                              <i class="fa fa-upload"></i> Upload 
+                              <input type="file" name="file_sk_kpeks" style="display: none;">
+                          </label>
+                          <p>filename.ex</p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -853,6 +870,14 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_input($data);
                             ?>
                         </div>
+
+                        <div class="form-group">
+                          <label class="btn btn-sm btn-success btn-file">
+                              <i class="fa fa-upload"></i> Upload 
+                              <input type="file" name="file_sk_iupeks" style="display: none;">
+                          </label>
+                          <p>filename.ex</p>
+                        </div>
                         <div class="form-group">
                           <?php
                             $data = array(
@@ -933,6 +958,14 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_label($data["placeholder"], $data["name"]);
                               echo form_input($data);
                             ?>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="btn btn-sm btn-success btn-file">
+                              <i class="fa fa-upload"></i> Upload 
+                              <input type="file" name="file_sk_kpeksp" style="display: none;">
+                          </label>
+                          <p>filename.ex</p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -1015,6 +1048,14 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_input($data);
                             ?>
                         </div>
+
+                        <div class="form-group">
+                          <label class="btn btn-sm btn-success btn-file">
+                              <i class="fa fa-upload"></i> Upload 
+                              <input type="file" name="file_sk_iupjual" style="display: none;">
+                          </label>
+                          <p>filename.ex</p>
+                        </div>
                         <div class="form-group">
                           <?php
                             $data = array(
@@ -1095,6 +1136,14 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_label($data["placeholder"], $data["name"]);
                               echo form_input($data);
                             ?>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="btn btn-sm btn-success btn-file">
+                              <i class="fa fa-upload"></i> Upload 
+                              <input type="file" name="file_sk_iupop" style="display: none;">
+                          </label>
+                          <p>filename.ex</p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -1179,7 +1228,7 @@ $(document).on("submit", "#form_password", function(event){
                             ?>
                             <div class="form-group" style=" padding-top: 5px">
                               <label class="btn btn-xs btn-success btn-file">
-                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_akta" style="display: none;" accept="image/*">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_akta" style="display: none;">
                               </label>
                               
                             </div>

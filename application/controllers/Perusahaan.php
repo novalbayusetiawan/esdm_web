@@ -161,6 +161,15 @@ class Perusahaan extends CI_Controller {
             "id" => $this->input->get("id")
         ));
         $data["nama_perusahaan"] = json_decode($response, TRUE)["result"]["nama_perusahaan"];
+        // file
+        $data["file_tinjau"] = json_decode($response, TRUE)["result"]["file_tinjau"];
+        $data["file_pu"] = json_decode($response, TRUE)["result"]["file_pu"];
+        $data["file_kpeks"] = json_decode($response, TRUE)["result"]["file_kpeks"];
+        $data["file_iupeks"] = json_decode($response, TRUE)["result"]["file_iupeks"];
+        $data["file_kpeksp"] = json_decode($response, TRUE)["result"]["file_kpeksp"];
+        $data["file_iupjual"] = json_decode($response, TRUE)["result"]["file_iupjual"];
+        $data["file_iupop"] = json_decode($response, TRUE)["result"]["file_iupop"];
+
         $data["id_perusahaan"] = json_decode($response, TRUE)["result"]["id"];
 
         $data["id"] = $this->input->get("id");
@@ -236,7 +245,48 @@ class Perusahaan extends CI_Controller {
 
     public function insert()
     {
-        header("Content-type: application/json");
+        header("Content-type: application/json");     
+
+        //FTP configuration
+        $ftp_config['hostname'] = 'ftp.dinarproject.com'; 
+        $ftp_config['username'] = 'novalbayusetiawan@dinarproject.com';
+        $ftp_config['password'] = 'samarinda1st';
+        $ftp_config['debug']    = TRUE;
+
+        $server_api = $this->config->item("api", "esdm");
+        $connected = @fsockopen(preg_replace(array("/http?:\/\//i", "/\/.*/i"), "", $server_api), 80);
+
+        if ($connected) {
+
+        if(!file_exists('./uploads/perusahaan/'.$this->input->post("nama_perusahaan"))){
+            mkdir('./uploads/perusahaan/'.$this->input->post("nama_perusahaan").'/',0777,true);
+        }
+
+        $config = array(
+            'upload_path' => 'uploads/perusahaan/'.$this->input->post("nama_perusahaan"),
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+        );
+        
+        $this->load->library('upload', $config);
+        $this->load->library('ftp');
+
+        // Koneksi FTP
+        $this->ftp->connect($ftp_config);
+        $this->ftp->changedir('./file_uploads/esdm/perusahaan');
+
+        // CekDir
+        if(!in_array($this->input->post("nama_perusahaan"), $this->ftp->list_files())){
+            $this->ftp->mkdir('/file_uploads/esdm/perusahaan/'.$this->input->post("nama_perusahaan"), 777);
+        }
+
+        // echo json_encode(count($_FILES));
+        foreach ($_FILES as $key => $value) {
+            if($this->upload->do_upload($key)){
+                $source = 'uploads/perusahaan/'.$this->input->post("nama_perusahaan").'/'.$value['name'];
+                $destination = "".$this->input->post("nama_perusahaan")."/".$value['name'];
+                $this->ftp->upload($source, $destination,'auto', 0775);
+            }
+        }
 
         $params = array(
             "nama_perusahaan" => $this->input->post("nama_perusahaan"),
@@ -349,14 +399,15 @@ class Perusahaan extends CI_Controller {
             "no_jamrekpro" => $this->input->post("no_jamrekpro"),
             "no_jaminankesungguhan" => $this->input->post("no_jaminankesungguhan"),
             "no_royalti" => $this->input->post("no_royalti"),
-            "no_iuran" => $this->input->post("no_iuran")
+            "no_iuran" => $this->input->post("no_iuran"),
+            "file_tinjau" => $_FILES['file_sk_tinjau']['name'],
+            "file_pu" => $_FILES['file_sk_pu']['name'],
+            "file_kpeks" => $_FILES['file_sk_kpeks']['name'],
+            "file_iupeks" => $_FILES['file_sk_iupeks']['name'],
+            "file_kpeksp" => $_FILES['file_sk_kpeksp']['name'],
+            "file_iupjual" => $_FILES['file_sk_iupjual']['name'],
+            "file_iupop" => $_FILES['file_sk_iupop']['name']
         );
-
-        $server_api = $this->config->item("api", "esdm");
-        $connected = @fsockopen(preg_replace(array("/http?:\/\//i", "/\/.*/i"), "", $server_api), 80);
-
-        if ($connected) {
-
             // Server
             $api = $this->config->item("api", "esdm");
             $app_id = $this->config->item("app_id", "esdm");
@@ -365,7 +416,12 @@ class Perusahaan extends CI_Controller {
             $this->my_api->set_app_id($app_id);
             $this->my_api->set_app_token($app_token);
             $response = $this->my_api->get_response("perusahaan/insert", $params);
+            
+            $data = json_decode($response);
+            $id = $data->result->id;
 
+            $params['id'] = $id;
+            
             // Local
             // $params = json_decode($response, TRUE)["result"];
             $api = $this->config->item("api", "esdm_local");
@@ -376,6 +432,9 @@ class Perusahaan extends CI_Controller {
             $this->my_api->set_app_token($app_token);
             $response = $this->my_api->get_response("perusahaan/insert", $params);
 
+            
+
+
         } else {
             $response = json_encode(array(
                 "status" => False,
@@ -383,8 +442,8 @@ class Perusahaan extends CI_Controller {
                 "result" => False
             ));
         }
-        echo $response;
-        // header('location:'.base_url()."perusahaan/change_index");
+        
+        header('location:'.base_url()."perusahaan/change_index");
     }
 
     public function update()

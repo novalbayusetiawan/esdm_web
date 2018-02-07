@@ -169,6 +169,7 @@ $(document).ready(function(){
         $("#form_edit").find("input[name=terbukti]").val(json.result.terbukti);
         $("#form_edit").find("input[name=jumlah_penjualan]").val(json.result.jumlah_penjualan);
         $("#form_edit").find("textarea[name=ket]").val(json.result.ket);
+        
     });
     request.fail(function(jqXHR, textStatus){
         $.gritter.add({title: "Request failed", text: textStatus});
@@ -715,8 +716,18 @@ $(document).on("submit", "#form_password", function(event){
                               <label class="btn btn-sm btn-success btn-file">
                                   <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_tinjau" style="display: none;" accept="image/*">
                               </label>
-                              <a href="" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
+                              <?php echo base_url() ?>
+                              <?php if ($file_tinjau != ""): ?>
+                              <?php
+                                if (file_exists(base_url().'/uploads/perusahaan/'.$nama_perusahaan.'/'.$file_tinjau)) {
+                                    $link_tinjau = '/uploads/perusahaan/'.$nama_perusahaan.'/'.$file_tinjau; 
+                                }else{
+                                    $link_tinjau = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$nama_perusahaan.'/'.$file_tinjau; 
+                                }
+                              ?>                                  
+                              <a href="<?php echo $link_tinjau ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
                               <a href="#" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif ?>
                               
                             </div>
                         <div class="form-group">
