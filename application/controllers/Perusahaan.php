@@ -218,7 +218,8 @@ class Perusahaan extends CI_Controller {
 
         for ($i = 0; $i < count($result["data"]); $i++){
             $id = $result["data"][$i]["id"];
-            $result["data"][$i]["open"] = "<a href=\"".base_url("perusahaan/change_form?id=$id")."\" class=\"btn btn-primary btn-xs\" role=\"button\" title=\"Edit\"><i class=\"fa fa-pencil\"></i> Edit</a> <a href=\"".base_url("perusahaan/delete?id=$id")."\" onclick=\"return confirm('Apakah anda yakin ingin menghapus data?');\" class=\"btn btn-danger btn-xs\" role=\"button\" title=\"Hapus\"><i class=\"fa fa-times\"></i></a>";
+            $nama_perusahaan = $result["data"][$i]["nama_perusahaan"];
+            $result["data"][$i]["open"] = "<a href=\"".base_url("perusahaan/change_form?id=$id")."\" class=\"btn btn-primary btn-xs\" role=\"button\" title=\"Edit\"><i class=\"fa fa-pencil\"></i> Edit</a> <a href=\"".base_url("perusahaan/delete?id=$id&nama=$nama_perusahaan")."\" onclick=\"return confirm('Apakah anda yakin ingin menghapus data?');\" class=\"btn btn-danger btn-xs\" role=\"button\" title=\"Hapus\"><i class=\"fa fa-times\"></i></a>";
         }
         echo json_encode($result);
     }
@@ -257,36 +258,6 @@ class Perusahaan extends CI_Controller {
         $connected = @fsockopen(preg_replace(array("/http?:\/\//i", "/\/.*/i"), "", $server_api), 80);
 
         if ($connected) {
-
-        if(!file_exists('./uploads/perusahaan/'.$this->input->post("nama_perusahaan"))){
-            mkdir('./uploads/perusahaan/'.$this->input->post("nama_perusahaan").'/',0777,true);
-        }
-
-        $config = array(
-            'upload_path' => 'uploads/perusahaan/'.$this->input->post("nama_perusahaan"),
-            'allowed_types' => "gif|jpg|png|jpeg|pdf",
-        );
-        
-        $this->load->library('upload', $config);
-        $this->load->library('ftp');
-
-        // Koneksi FTP
-        $this->ftp->connect($ftp_config);
-        $this->ftp->changedir('./file_uploads/esdm/perusahaan');
-
-        // CekDir
-        if(!in_array($this->input->post("nama_perusahaan"), $this->ftp->list_files())){
-            $this->ftp->mkdir('/file_uploads/esdm/perusahaan/'.$this->input->post("nama_perusahaan"), 777);
-        }
-
-        // echo json_encode(count($_FILES));
-        foreach ($_FILES as $key => $value) {
-            if($this->upload->do_upload($key)){
-                $source = 'uploads/perusahaan/'.$this->input->post("nama_perusahaan").'/'.$value['name'];
-                $destination = "".$this->input->post("nama_perusahaan")."/".$value['name'];
-                $this->ftp->upload($source, $destination,'auto', 0775);
-            }
-        }
 
         $params = array(
             "nama_perusahaan" => $this->input->post("nama_perusahaan"),
@@ -421,7 +392,7 @@ class Perusahaan extends CI_Controller {
             $id = $data->result->id;
 
             $params['id'] = $id;
-            
+
             // Local
             // $params = json_decode($response, TRUE)["result"];
             $api = $this->config->item("api", "esdm_local");
@@ -432,8 +403,36 @@ class Perusahaan extends CI_Controller {
             $this->my_api->set_app_token($app_token);
             $response = $this->my_api->get_response("perusahaan/insert", $params);
 
-            
+            $config = array(
+                'upload_path' => 'uploads/perusahaan/'.$id.'_'.$this->input->post("nama_perusahaan"),
+                'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            );
+            if(!file_exists('./uploads/perusahaan/'.$id.'_'.$this->input->post("nama_perusahaan"))){
+                mkdir('./uploads/perusahaan/'.$id.'_'.$this->input->post("nama_perusahaan").'/',0777,true);
+            }
 
+            $this->load->library('upload', $config);
+            $this->load->library('ftp');
+
+            // Koneksi FTP
+            $this->ftp->connect($ftp_config);
+            $this->ftp->changedir('./file_uploads/esdm/perusahaan');
+
+            // CekDir
+            if(!in_array($id.'_'.$this->input->post("nama_perusahaan"), $this->ftp->list_files())){
+                $this->ftp->mkdir('/file_uploads/esdm/perusahaan/'.$id.'_'.$this->input->post("nama_perusahaan"), 0777);
+            }
+
+            echo json_encode($_FILES);
+            foreach ($_FILES as $key => $value) {
+                if($this->upload->do_upload($key)){
+                    $upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
+                    $file_name = $upload_data['file_name'];
+                    $source = 'uploads/perusahaan/'.$id.'_'.$this->input->post("nama_perusahaan").'/'.$file_name;
+                    $destination = "".$id.'_'.$this->input->post("nama_perusahaan")."/".$file_name;
+                    $this->ftp->upload($source, $destination,'auto', 0775);
+                }
+            }
 
         } else {
             $response = json_encode(array(
@@ -596,12 +595,69 @@ class Perusahaan extends CI_Controller {
         echo $response;
     }
 
+    public function hapus_file()
+    {
+        header("Content-type: application/json");
+
+        //FTP configuration
+        $ftp_config['hostname'] = 'ftp.dinarproject.com'; 
+        $ftp_config['username'] = 'novalbayusetiawan@dinarproject.com';
+        $ftp_config['password'] = 'samarinda1st';
+        $ftp_config['debug']    = TRUE;
+
+        $params = array(
+            "id" => $this->input->get("id"),
+            'type' => $this->input->get("type"),
+        );
+        
+        $server_api = $this->config->item("api", "esdm");
+        $connected = @fsockopen(preg_replace(array("/http?:\/\//i", "/\/.*/i"), "", $server_api), 80);
+
+        if ($connected) {
+
+            // Server
+            $api = $this->config->item("api", "esdm");
+            $app_id = $this->config->item("app_id", "esdm");
+            $app_token = $this->config->item("app_token", "esdm");
+            $this->my_api->set_api($api);
+            $this->my_api->set_app_id($app_id);
+            $this->my_api->set_app_token($app_token);
+            $response = $this->my_api->get_response("perusahaan/hapus_file", $params);
+
+            // Local
+            // $params = json_decode($response, TRUE)["result"];
+            $api = $this->config->item("api", "esdm_local");
+            $app_id = $this->config->item("app_id", "esdm_local");
+            $app_token = $this->config->item("app_token", "esdm_local");
+            $this->my_api->set_api($api);
+            $this->my_api->set_app_id($app_id);
+            $this->my_api->set_app_token($app_token);
+            $response = $this->my_api->get_response("perusahaan/hapus_file", $params);
+
+        } else {
+            $response = json_encode(array(
+                "status" => False,
+                "message" => "Please check your connection, server can't be reached.",
+                "result" => False
+            ));
+        }
+
+        // echo json_encode($params);
+    }
     public function delete()
     {
         header("Content-type: application/json");
 
+        //FTP configuration
+        $ftp_config['hostname'] = 'ftp.dinarproject.com'; 
+        $ftp_config['username'] = 'novalbayusetiawan@dinarproject.com';
+        $ftp_config['password'] = 'samarinda1st';
+        $ftp_config['debug']    = TRUE;
+
+        $nama_perusahaan = $this->input->get("nama");
+        $id = $this->input->get("id");
         $params = array(
-            "id" => $this->input->get("id")
+            "id" => $id
         );
 
         $server_api = $this->config->item("api", "esdm");
@@ -627,6 +683,37 @@ class Perusahaan extends CI_Controller {
             $this->my_api->set_app_id($app_id);
             $this->my_api->set_app_token($app_token);
             $response = $this->my_api->get_response("perusahaan/delete", $params);
+
+            $dir = './uploads/perusahaan/'.$id.'_'.$nama_perusahaan.'/';
+               if (is_dir($dir)) { 
+                 $objects = scandir($dir); 
+                 foreach ($objects as $object) { 
+                   if ($object != "." && $object != "..") { 
+                     if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink($dir."/".$object); 
+                   } 
+                 } 
+                 reset($objects); 
+                 rmdir($dir); 
+               }
+
+            // echo $id.'_'.$nama_perusahaan;
+            $this->load->library('ftp');
+
+            // Koneksi FTP
+            $this->ftp->connect($ftp_config);
+            $this->ftp->changedir('./file_uploads/esdm/perusahaan/'.$id.'_'.$nama_perusahaan);
+            echo json_encode($this->ftp->list_files());
+            foreach ($this->ftp->list_files() as $key => $value) {
+                if($value != '.' && $value != '..'){
+                    $this->ftp->delete_file($value);
+                }
+            }
+            $this->ftp->delete_dir('/file_uploads/esdm/perusahaan/'.$id.'_'.$nama_perusahaan.'/');
+            
+            // CekDir
+            // if(in_array($id.'_'.$nama_perusahaan, $this->ftp->list_files())){
+            //     $this->ftp->delete_dir('/file_uploads/esdm/perusahaan/'.$id.'_'.$nama_perusahaan.'/');
+            // }
 
         } else {
             $response = json_encode(array(

@@ -607,9 +607,9 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_tinjau" style="display: none;">
+                              <input type="file" name="file_sk_tinjau" style="display: none;" onchange="setName(this)">
                           </label>
-                          <p>filename.ex</p>
+                          <p></p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -696,9 +696,9 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_pu" style="display: none;">
+                              <input type="file" name="file_sk_pu" style="display: none;" onchange="setName(this)">
                           </label>
-                          <p>filename.ex</p>
+                          <p></p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -785,9 +785,9 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_kpeks" style="display: none;">
+                              <input type="file" name="file_sk_kpeks" style="display: none;" onchange="setName(this)">
                           </label>
-                          <p>filename.ex</p>
+                          <p></p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -874,9 +874,9 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_iupeks" style="display: none;">
+                              <input type="file" name="file_sk_iupeks" style="display: none;" onchange="setName(this)">
                           </label>
-                          <p>filename.ex</p>
+                          <p></p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -963,9 +963,9 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_kpeksp" style="display: none;">
+                              <input type="file" name="file_sk_kpeksp" style="display: none;" onchange="setName(this)">
                           </label>
-                          <p>filename.ex</p>
+                          <p></p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -1052,9 +1052,9 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_iupjual" style="display: none;">
+                              <input type="file" name="file_sk_iupjual" style="display: none;" onchange="setName(this)">
                           </label>
-                          <p>filename.ex</p>
+                          <p></p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -1141,9 +1141,9 @@ $(document).on("submit", "#form_password", function(event){
                         <div class="form-group">
                           <label class="btn btn-sm btn-success btn-file">
                               <i class="fa fa-upload"></i> Upload 
-                              <input type="file" name="file_sk_iupop" style="display: none;">
+                              <input type="file" name="file_sk_iupop" style="display: none;" onchange="setName(this)">
                           </label>
-                          <p>filename.ex</p>
+                          <p></p>
                         </div>
                         <div class="form-group">
                           <?php
@@ -1226,12 +1226,12 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_label($data["placeholder"], $data["name"]);
                               echo form_textarea($data);
                             ?>
-                            <div class="form-group" style=" padding-top: 5px">
+                            <!-- <div class="form-group" style=" padding-top: 5px">
                               <label class="btn btn-xs btn-success btn-file">
                                   <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_akta" style="display: none;">
                               </label>
                               
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <?php
@@ -2001,3 +2001,18 @@ $(document).on("submit", "#form_password", function(event){
     </div>
     </form>
 </div>
+<script type="text/javascript">
+  function setName(argument) {
+    // alert(argument.files.item(0).name);
+    // var text = ;
+    // alert(text);
+    var filename = argument.files.item(0).name
+    var ex = filename.split('.').pop();
+    if(filename.length > 30)
+      text = filename.substring(0,30)+'...'+ex
+    else
+      text = filename;
+    argument.parentElement.nextElementSibling.innerHTML = text;
+
+  }
+</script>

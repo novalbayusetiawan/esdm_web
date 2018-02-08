@@ -713,20 +713,23 @@ $(document).on("submit", "#form_password", function(event){
                             ?>
                         </div>
                         <div class="form-group">
-                              <label class="btn btn-sm btn-success btn-file">
-                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_tinjau" style="display: none;" accept="image/*">
-                              </label>
-                              <?php echo base_url() ?>
+                            <b> <?php echo $file_tinjau ?></b>
+                            <br>
                               <?php if ($file_tinjau != ""): ?>
                               <?php
-                                if (file_exists(base_url().'/uploads/perusahaan/'.$nama_perusahaan.'/'.$file_tinjau)) {
-                                    $link_tinjau = '/uploads/perusahaan/'.$nama_perusahaan.'/'.$file_tinjau; 
+                                if (file_exists('/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_tinjau)) {
+                                    $link_tinjau = '/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_tinjau; 
                                 }else{
-                                    $link_tinjau = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$nama_perusahaan.'/'.$file_tinjau; 
+                                    $link_tinjau = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_tinjau; 
                                 }
                               ?>                                  
                               <a href="<?php echo $link_tinjau ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
-                              <a href="#" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif; ?>
+                              <label class="btn btn-sm btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_tinjau" style="display: none;" accept="image/*" on>
+                              </label>
+                              <?php if ($file_tinjau != ""): ?>
+                              <a href="<?php echo base_url("perusahaan/hapus_file?id={$id}&type=file_tinjau&name={$file_tinjau}"); ?>" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
                               <?php endif ?>
                               
                             </div>
@@ -811,6 +814,28 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_input($data);
                             ?>
                         </div>
+
+                        <div class="form-group">
+                            <b> <?php echo $file_pu ?></b>
+                            <br>
+                              <?php if ($file_pu != ""): ?>
+                              <?php
+                                if (file_exists('/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_pu)) {
+                                    $link_pu = '/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_pu; 
+                                }else{
+                                    $link_pu = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_pu; 
+                                }
+                              ?>                                  
+                              <a href="<?php echo $link_pu ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
+                              <?php endif; ?>
+                              <label class="btn btn-sm btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_pu" style="display: none;" accept="image/*" on>
+                              </label>
+                              <?php if ($file_pu != ""): ?>
+                              <a href="<?php echo base_url("perusahaan/hapus_file?id={$id}&type=file_pu&name={$file_pu}"); ?>" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif ?>
+                              
+                            </div>
                         <div class="form-group">
                           <?php
                             $data = array(
@@ -893,6 +918,27 @@ $(document).on("submit", "#form_password", function(event){
                             ?>
                         </div>
                         <div class="form-group">
+                            <b> <?php echo $file_kpeks ?></b>
+                            <br>
+                              <?php if ($file_kpeks != ""): ?>
+                              <?php
+                                if (file_exists('/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_kpeks)) {
+                                    $link_kpeks = '/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_kpeks; 
+                                }else{
+                                    $link_kpeks = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_kpeks; 
+                                }
+                              ?>                                  
+                              <a href="<?php echo $link_kpeks ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
+                              <?php endif; ?>
+                              <label class="btn btn-sm btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_kpeks" style="display: none;" accept="image/*" on>
+                              </label>
+                              <?php if ($file_kpeks != ""): ?>
+                              <a href="<?php echo base_url("perusahaan/hapus_file?id={$id}&type=file_kpeks&name={$file_kpeks}"); ?>" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif ?>
+                              
+                            </div>
+                        <div class="form-group">
                           <?php
                             $data = array(
                               "name" => "luas_kpeks",
@@ -973,6 +1019,29 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_input($data);
                             ?>
                         </div>
+
+                        <div class="form-group">
+                            wwk
+                            <b> <?php echo $file_iupeks ?></b>
+                            <br>
+                              <?php if ($file_iupeks != ""): ?>
+                              <?php
+                                if (file_exists('/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupeks)) {
+                                    $link_iupeks = '/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupeks; 
+                                }else{
+                                    $link_iupeks = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupeks; 
+                                }
+                              ?>                                  
+                              <a href="<?php echo $link_iupeks ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
+                              <?php endif; ?>
+                              <label class="btn btn-sm btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_iupeks" style="display: none;" accept="image/*" on>
+                              </label>
+                              <?php if ($file_iupeks != ""): ?>
+                              <a href="<?php echo base_url("perusahaan/hapus_file?id={$id}&type=file_iupeks&name={$file_iupeks}"); ?>" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif ?>
+                              
+                            </div>
                         <div class="form-group">
                           <?php
                             $data = array(
@@ -1055,6 +1124,27 @@ $(document).on("submit", "#form_password", function(event){
                             ?>
                         </div>
                         <div class="form-group">
+                            <b> <?php echo $file_kpeksp ?></b>
+                            <br>
+                              <?php if ($file_kpeksp != ""): ?>
+                              <?php
+                                if (file_exists('/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_kpeksp)) {
+                                    $link_kpeksp = '/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_kpeksp; 
+                                }else{
+                                    $link_kpeksp = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_kpeksp; 
+                                }
+                              ?>                                  
+                              <a href="<?php echo $link_kpeksp ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
+                              <?php endif; ?>
+                              <label class="btn btn-sm btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_kpeksp" style="display: none;" accept="image/*" on>
+                              </label>
+                              <?php if ($file_kpeksp != ""): ?>
+                              <a href="<?php echo base_url("perusahaan/hapus_file?id={$id}&type=file_kpeksp&name={$file_kpeksp}"); ?>" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif ?>
+                              
+                            </div>
+                        <div class="form-group">
                           <?php
                             $data = array(
                               "name" => "luas_kpeksp",
@@ -1135,6 +1225,28 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_input($data);
                             ?>
                         </div>
+
+                        <div class="form-group">
+                            <b> <?php echo $file_iupjual ?></b>
+                            <br>
+                              <?php if ($file_iupjual != ""): ?>
+                              <?php
+                                if (file_exists('/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupjual)) {
+                                    $link_iupjual = '/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupjual; 
+                                }else{
+                                    $link_iupjual = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupjual; 
+                                }
+                              ?>                                  
+                              <a href="<?php echo $link_iupjual ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
+                              <?php endif; ?>
+                              <label class="btn btn-sm btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_iupjual" style="display: none;" accept="image/*" on>
+                              </label>
+                              <?php if ($file_iupjual != ""): ?>
+                              <a href="<?php echo base_url("perusahaan/hapus_file?id={$id}&type=file_iupjual&name={$file_iupjual}"); ?>" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif ?>
+                              
+                            </div>
                         <div class="form-group">
                           <?php
                             $data = array(
@@ -1216,6 +1328,28 @@ $(document).on("submit", "#form_password", function(event){
                               echo form_input($data);
                             ?>
                         </div>
+                        
+                        <div class="form-group">
+                            <b> <?php echo $file_iupop ?></b>
+                            <br>
+                              <?php if ($file_iupop != ""): ?>
+                              <?php
+                                if (file_exists('/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupop)) {
+                                    $link_iupop = '/uploads/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupop; 
+                                }else{
+                                    $link_iupop = 'http://dinarproject.com/file_uploads/esdm/perusahaan/'.$id_perusahaan.'_'.$nama_perusahaan.'/'.$file_iupop; 
+                                }
+                              ?>                                  
+                              <a href="<?php echo $link_iupop ?>" title="Download SK" class="btn btn-sm btn-info"><i class="fa fa-download"></i> Download</a>
+                              <?php endif; ?>
+                              <label class="btn btn-sm btn-success btn-file">
+                                  <i class="fa fa-upload"></i> Upload <input type="file" name="file_sk_iupop" style="display: none;" accept="image/*" on>
+                              </label>
+                              <?php if ($file_iupop != ""): ?>
+                              <a href="<?php echo base_url("perusahaan/hapus_file?id={$id}&type=file_iupop&name={$file_iupop}"); ?>" onclick="return confirm('Yakin ingin menghapus?')" title="Hapus SK" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Hapus</a>
+                              <?php endif ?>
+                              
+                            </div>
                         <div class="form-group">
                           <?php
                             $data = array(
